@@ -1,0 +1,5 @@
+{
+  "name": "nuScript",
+  "description": "Intelligent test case to automation script converter using Gemini. Supports Cypress, Playwright, and Selenium with various design patterns.",
+  "requestFramePermissions": []
+}

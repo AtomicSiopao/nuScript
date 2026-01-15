@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>nuScript</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            colors: {
+              primary: '#4f46e5', // Indigo 600
+              primaryHover: '#4338ca', // Indigo 700
+              secondary: '#64748b', // Slate 500
+              dark: '#0f172a', // Slate 900
+              surface: '#1e293b', // Slate 800
+              accent: '#0ea5e9', // Sky 500
+            },
+            animation: {
+              'forge': 'forge 1.5s infinite',
+            }
+          }
+        }
+      }
+    </script>
+    <script>
+      // Initialize theme
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+    </script>
+    <style>
+      body {
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      /* Circuit Board Image Background with 5% opacity */
+      .bg-circuit-pattern {
+        position: relative;
+        background-color: #f8fafc; /* slate-50 */
+      }
+      
+      .bg-circuit-pattern::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://wallpapers.com/images/featured/circuit-board-v9sqijtzusq0u8hc.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.05;
+        z-index: -1;
+        pointer-events: none;
+      }
+      
+      .dark .bg-circuit-pattern {
+        background-color: #020617; /* slate-950 */
+      }
+
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(100, 116, 139, 0.4);
+        border-radius: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(100, 116, 139, 0.6);
+      }
+      
+      @keyframes forge {
+        0% { transform: rotate(0deg); }
+        20% { transform: rotate(-25deg); }
+        40% { transform: rotate(25deg); }
+        50% { transform: rotate(25deg); }
+        100% { transform: rotate(0deg); }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/"
+  }
+}
+</script>
+</head>
+  <body class="bg-circuit-pattern text-slate-800 dark:text-slate-100 min-h-screen font-sans">
+    <div id="root"></div>
+  </body>
+</html>
